@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<style> div#loading {width: 100%;height: 100%;position: fixed;background:#fff;z-index: 100000;}
+ div#loading img{width: auto;position: fixed;left: 50%; top: 50%;}</style>
+ <script src="../jq/jquery-1.9.1.min.js"></script>
+</head>
+<body>
+<div style="width: max-width:400px; min-height: 400px;">
+<img style="max-width: 100%;max-height: 100%;" src="images/inv_img0.jpg" alt="">
+</div>
+	
+<div id="loading"><img src="images/2.gif"></div>
+ <audio autoplay="true">
+    <source src="video.mp3" type="audio/mpeg">
+</audio> 
+<div  id="M-btn" class="play"></div> 
+<script>
+$(window).load(function() {
+    $("#loading").hide();
+        var music = document.getElementById('M-btn');
+        var audio = document.getElementsByTagName('audio')[0];
+        audio.addEventListener("ended", function(event){
+            music.setAttribute("class", "");
+        },false);
+        music.addEventListener("touchstart", function(event){
+            if (audio.paused) {
+                audio.play();
+                this.setAttribute("class", "play");
+            }else{
+                audio.pause();
+                this.setAttribute("class", "");
+            };
+        },false);
+})
+</script>
+
+</body>
+</html>
